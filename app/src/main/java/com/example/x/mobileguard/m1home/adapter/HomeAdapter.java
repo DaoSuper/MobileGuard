@@ -45,6 +45,4 @@ public class HomeAdapter extends BaseAdapter{
         tv_name.setText(names[i]);
         return view1;
     }
-
-
 }
