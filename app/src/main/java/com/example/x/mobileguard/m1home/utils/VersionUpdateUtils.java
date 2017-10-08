@@ -39,7 +39,8 @@ public class VersionUpdateUtils {
     private static final int MESSAGE_ENTERHOME = 105;
 
    private Handler handler = new Handler(){
-       public void handlerMessage(Message msg){
+       @Override
+       public void handleMessage(Message msg){
            switch (msg.what){
                case MESSAGE_IO_ERROR:
                    Toast.makeText(context,"IO错误",Toast.LENGTH_LONG).show();
@@ -69,7 +70,7 @@ public class VersionUpdateUtils {
             HttpClient httpClient = new DefaultHttpClient();
             HttpConnectionParams.setConnectionTimeout(httpClient.getParams(),5000);
             HttpConnectionParams.setSoTimeout(httpClient.getParams(),5000);
-            HttpGet httpGet = new HttpGet("http://androif2017.duapp.com/updateinfo.html");
+            HttpGet httpGet = new HttpGet("http://android2017.duapp.com/updateinfo.html");
             HttpResponse execute  = httpClient.execute(httpGet);
             if (execute.getStatusLine().getStatusCode()==200){
                 HttpEntity httpEntity = execute.getEntity();
@@ -97,6 +98,7 @@ public class VersionUpdateUtils {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("检查到有新版本："+versionEntity.versionCode);
         builder.setMessage(versionEntity.description);
+        builder.setCancelable(false);
         builder.setIcon(R.mipmap.ic_launcher_round);
         builder.setPositiveButton("立刻升级",new DialogInterface.OnClickListener(){
                  @Override
@@ -118,6 +120,6 @@ public class VersionUpdateUtils {
     }
     private void downloadNewApk(String apkurl){
         DownloadUtils downloadUtils = new DownloadUtils();
-        downloadUtils.downloadApk(apkurl,"moblieguard.apk",context);
+        downloadUtils.downloadApk(apkurl,"mobileguard.apk",context);
     }
 }
