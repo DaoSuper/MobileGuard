@@ -79,7 +79,7 @@ public class VersionUpdateUtils {
                 versionEntity.description = jsonObject.getString("des");
                 versionEntity.apkurl = jsonObject.getString("apkurl");
                 if (!mVersion.equals(versionEntity.versionCode)){
-                    //版本不同，需要升级
+                    //版本需要升级
                     handler.sendEmptyMessage(MESSAGE_SHOW_DIALOG);
                 }
             }
