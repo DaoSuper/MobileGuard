@@ -14,7 +14,7 @@ public class Setup4Activity extends BaseSetUpActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_4);
-        //设置第4个圆点的颜色
+        //设置第4个小圆点的颜色
         ((RadioButton)findViewById(R.id.rb_four)).setChecked(true);
     }
 
