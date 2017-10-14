@@ -15,7 +15,7 @@ public class Setup1Activity extends BaseSetUpActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_1);
-        //设置第1个小圆点的颜色
+        //设置第一个小圆点的颜色
         ((RadioButton)findViewById(R.id.rb_first)).setChecked(true);
     }
 

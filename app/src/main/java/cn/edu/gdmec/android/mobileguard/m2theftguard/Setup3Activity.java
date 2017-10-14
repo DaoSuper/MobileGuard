@@ -14,7 +14,7 @@ public class Setup3Activity extends BaseSetUpActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_3);
-        //设置第3个小圆点的颜色
+        //设置第三个小圆点的颜色
         ((RadioButton)findViewById(R.id.rb_third)).setChecked(true);
     }
 
