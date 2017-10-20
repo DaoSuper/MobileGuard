@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-import static android.R.attr.data;
-
 /**
  * Created by X on 2017/10/13.
  */
@@ -37,6 +35,7 @@ public class Setup3Activity extends BaseSetUpActivity implements View.OnClickLis
 
     @Override
     public void showNext() {
+        
         //判断文本输入框中是否有电话号码
         String safePhone = mInputPhone.getText().toString().trim();
         if (TextUtils.isEmpty(safePhone)){
