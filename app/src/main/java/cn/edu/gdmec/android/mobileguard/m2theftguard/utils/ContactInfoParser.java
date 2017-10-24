@@ -34,7 +34,7 @@ public class ContactInfoParser {
                 //2.根据联系人的id，查询data表，把这个id的数据取出来
                 //系统api 查询data表的时候，不是真正的查询data表 而是查询的data表的视图
                 Cursor dataCursor = resolver.query(datauri, new String[] {
-                        "data1", "mimetype" }, "raw_contact_id=?",
+                                "data1", "mimetype" }, "raw_contact_id=?",
                         new String[] { id },null);
                 while (dataCursor.moveToNext()) {
                     String data1 = dataCursor.getString(0);

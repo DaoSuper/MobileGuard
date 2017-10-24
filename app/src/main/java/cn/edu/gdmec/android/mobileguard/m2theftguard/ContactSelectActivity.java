@@ -27,6 +27,7 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
     private ContactAdapter adapter;
     private List<ContactInfo>systemContacts;
     Handler mHandler = new Handler(){
+        @Override
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case 10:
