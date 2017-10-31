@@ -71,7 +71,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                      Toast.makeText(this,"电话号码和手机号不能为空！",Toast.LENGTH_LONG).show();
                      return;
                  }else {
-                     //电话号码和手机号不能为空
+                     //电话号码和手机号不能为空！
                      BlackContactInfo blackContactInfo = new BlackContactInfo();
                      blackContactInfo.phoneNumber = number;
                      blackContactInfo.contactName = name;
