@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -110,6 +111,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_security_phone);
         initView();
         fillData();
@@ -129,20 +131,22 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
-        if (dao.getTotalNumber() > 0){
-            mHaveBlackNumber.setVisibility(View.VISIBLE);
-            mNoBlackNumber.setVisibility(View.GONE);
-        }else {
-            mHaveBlackNumber.setVisibility(View.GONE);
-            mNoBlackNumber.setVisibility(View.VISIBLE);
-        }
-        pagenumber = 0;
-        pageBlackNumber.clear();
-        pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber,pagesize));
-        if (adapter != null){
-            adapter.notifyDataSetChanged();
+        if (totalNumber != dao.getTotalNumber()) {
+            if (dao.getTotalNumber() > 0) {
+                mHaveBlackNumber.setVisibility(View.VISIBLE);
+                mNoBlackNumber.setVisibility(View.GONE);
+            } else {
+                mHaveBlackNumber.setVisibility(View.GONE);
+                mNoBlackNumber.setVisibility(View.VISIBLE);
+            }
+            pagenumber = 0;
+            pageBlackNumber.clear();
+            pageBlackNumber.addAll(dao.getPageBlackNumber(pagenumber, pagesize));
+            if (adapter != null) {
+                adapter.notifyDataSetChanged();
+            }
         }
     }
 }
