@@ -74,6 +74,17 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
                 finish();
             }
         });
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ContactInfo item = (ContactInfo) adapter.getItem(position);
+                Intent intent = new Intent();
+                intent.putExtra("name", item.name);
+                setResult(0, intent);
+                finish();
+            }
+        });
     }
 
     @Override
