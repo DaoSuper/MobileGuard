@@ -45,8 +45,8 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
             //获取选中的联系信息
             String phone = data.getStringExtra("phone");
             String name = data.getStringExtra("name");
-            mNumET.setTag(name);
-            mNumET.setTag(phone);
+            mNumET.setText(phone);
+            mNameET.setText(name);
         }
     }
 
