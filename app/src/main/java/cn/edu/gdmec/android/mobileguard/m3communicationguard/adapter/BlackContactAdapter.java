@@ -84,7 +84,7 @@ public class BlackContactAdapter extends BaseAdapter {
 
         holder.mContactImgv.setBackgroundResource(R.drawable.brightpurple_contact_icon);
         holder.mDeleteView.setOnClickListener(new View.OnClickListener(){
-            
+
             @Override
             public void onClick(View view) {
                 boolean datele = dao.detele(contactInfos.get(i));
