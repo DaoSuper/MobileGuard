@@ -56,6 +56,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_add_black_number);
         dao = new BlackNumberDao(AddBlackNumberActivity.this);
         initView();
@@ -68,7 +69,7 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
                 finish();
                 break;
             case R.id.add_blacknum_btn:
-                String number = mNameET.getText().toString().trim();
+                String number = mNumET.getText().toString().trim();
                 String name = mNameET.getText().toString().trim();
                 if (TextUtils.isEmpty(number)||TextUtils.isEmpty(name)){
                     Toast.makeText(this,"电话号码和手机号不能为空!",Toast.LENGTH_LONG).show();
