@@ -93,8 +93,8 @@ public class AppManagerAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }else {
             viewHolder = new ViewHolder();
-            view = view.inflate(context, R.layout.item_appmanager_list, null);
-            viewHolder.mAppIconImgv = (ImageView) view.findViewById(R.id.imgv_appicon);
+            view = View.inflate(context,R.layout.item_appmanager_list,null);
+            viewHolder.mAppIconImgv =(ImageView) view.findViewById(R.id.imgv_appicon);
             viewHolder.mAppLocationTV = (TextView) view.findViewById(R.id.tv_appisroom);
             viewHolder.mAppSizeTV = (TextView) view.findViewById(R.id.tv_appsize);
             viewHolder.mAppNameTV = (TextView) view.findViewById(R.id.tv_appname);
@@ -107,7 +107,7 @@ public class AppManagerAdapter extends BaseAdapter {
         }
         if (appInfo != null){
             viewHolder.mAppLocationTV.setText(appInfo.getAppLocation(appInfo.isInRoom));
-            viewHolder.mAppIconImgv.setImageDrawable(appinfo.icon);
+            viewHolder.mAppIconImgv.setImageDrawable(appInfo.icon);
             viewHolder.mAppSizeTV.setText(Formatter.formatFileSize(context,appInfo.appSize));
             viewHolder.mAppNameTV.setText(appInfo.appName);
             if (appInfo.isSelected) {
@@ -120,7 +120,7 @@ public class AppManagerAdapter extends BaseAdapter {
         viewHolder.mLuanchAppTV.setOnClickListener(listener);
         viewHolder.mSettingAppTV.setOnClickListener(listener);
         viewHolder.mShardAppTV.setOnClickListener(listener);
-        viewHolder.mUninstallTV.setOnClickListener(listener):
+        viewHolder.mUninstallTV.setOnClickListener(listener);
 
         return view;
     }
@@ -137,23 +137,23 @@ public class AppManagerAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        /* 启动App */
+        /** 启动App */
         TextView mLuanchAppTV;
-        /* 卸载App */
+        /** 卸载App */
         TextView mUninstallTV;
-        /* 分享App */
+        /** 分享App */
         TextView mShardAppTV;
-        /* 设置App */
+        /** 设置App */
         TextView mSettingAppTV;
-        /* app图标 */
-        TextView mAppIconImgv;
-        /* app位置 */
+        /** app图标 */
+        ImageView mAppIconImgv;
+        /** app位置 */
         TextView mAppLocationTV;
-        /* app大小 */
+        /** app大小 */
         TextView mAppSizeTV;
-        /* app名称 */
+        /** app名称 */
         TextView mAppNameTV;
-        /* 操作App的线性布局 */
+        /** 操作App的线性布局 */
         LinearLayout mAppOptionLL;
     }
 
