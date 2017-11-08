@@ -49,7 +49,7 @@ public class AppManagerAdapter extends BaseAdapter {
             return null;
         }
         AppInfo appInfo;
-        if (i< (UserAppInfos.size() + 1)) {
+        if (i < (UserAppInfos.size() + 1)) {
             //用户进程
             appInfo = UserAppInfos.get(i - 1);//多了一个textview的标签
             //位置需要-1
@@ -74,7 +74,7 @@ public class AppManagerAdapter extends BaseAdapter {
             tv.setText("用户程序：" + UserAppInfos.size() + "个");
             return tv;
             //系统应用
-        } else if (i == UserAppInfos.size() + 1) {
+        } else if (i == (UserAppInfos.size() + 1)) {
             TextView tv = getTextView();
             tv.setText("系统程序:" + SystemAppInfos.size() + "个");
             return tv;
