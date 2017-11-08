@@ -26,7 +26,7 @@ public class DensityUtil {
     public static int px2dip(Context context,float pxValue){
         try{
             final float scale = context.getResources().getDisplayMetrics().density;
-            return (int) (pxValue * scale + 0.5f);
+            return (int) (pxValue / scale + 0.5f);
         }catch (Exception e){
             e.printStackTrace();
         }

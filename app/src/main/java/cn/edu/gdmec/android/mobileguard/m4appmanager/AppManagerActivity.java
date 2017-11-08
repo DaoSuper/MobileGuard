@@ -103,7 +103,7 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         initView();
     }
 
-    /** 初始化控件*/
+    /** 初始化控件 */
     private void initView(){
         findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_yellow));
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
