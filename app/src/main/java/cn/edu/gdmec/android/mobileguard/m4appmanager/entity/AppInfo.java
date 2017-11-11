@@ -23,6 +23,14 @@ public class AppInfo {
     public boolean isUserApp;
     /** 是否选中，默认都为false */
     public boolean isSelected = false;
+    /** 应用程序版本号 */
+    public String appVersion;
+    /** 应用程序安装时间 */
+    public String inStalldate;
+    /** apk权限申请信息 */
+    public String Permissions;
+    /** apk证书签署者信息 */
+    public String certMsg = "";
 
     /** 拿到APP位置字符串 */
     public String getAppLocation(boolean isInRoom){

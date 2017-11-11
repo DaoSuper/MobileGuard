@@ -1,6 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.utils;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -63,5 +65,23 @@ public class EngineUtils {
         }else {
             Toast.makeText(context,"系统应用无法卸载",Toast.LENGTH_LONG).show();
         }
+    }
+
+    /** 关于应用信息 */
+    public static void AboutAppData(Context context,AppInfo appInfo){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(appInfo.appName);
+        builder.setMessage(
+                "Version:"+appInfo.appVersion+"\n\n"+
+                 "Install time:"+appInfo.inStalldate+"\n\n"+
+                 "Certificate issuer:"+appInfo.certMsg+"\n\n"+
+                 "Permission:"+appInfo.Permissions);
+        builder.setNegativeButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
     }
 }
