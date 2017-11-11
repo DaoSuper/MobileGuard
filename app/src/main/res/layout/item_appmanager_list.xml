@@ -37,7 +37,7 @@
             android:layout_below="@+id/tv_appname"/>
     </RelativeLayout>
 
-    <view
+    <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/black30"/>
@@ -52,7 +52,7 @@
 
         <TextView
             android:id="@+id/tv_launch_app"
-            style="@style/textview14sp"
+            style="@style/tvyellow14sp"
             android:drawableTop="@drawable/phoneicon_yellow_n"
             android:text="启动"/>
 
@@ -63,7 +63,7 @@
 
         <TextView
             android:id="@+id/tv_uninstall_app"
-            style="@style/textview14sp"
+            style="@style/tvyellow14sp"
             android:drawableTop="@drawable/deleteicon_yellow_n"
             android:text="卸载"/>
 
@@ -74,7 +74,7 @@
 
         <TextView
             android:id="@+id/tv_share_app"
-            style="@style/textview14sp"
+            style="@style/tvyellow14sp"
             android:drawableTop="@drawable/shareicon_yellow_n"
             android:text="分享"/>
 
@@ -85,8 +85,19 @@
 
         <TextView
             android:id="@+id/tv_setting_app"
-            style="@style/textview14sp"
+            style="@style/tvyellow14sp"
             android:drawableTop="@drawable/settingicon_yellow_n"
             android:text="分享"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:background="@color/black30"/>
+        
+        <TextView
+            android:id="@+id/tv_abouticon_app"
+            style="@style/tvyellow14sp"
+            android:drawableTop="@drawable/abouticon_yellow_n"
+            android:text="关于"/>
     </LinearLayout>
 </LinearLayout>
