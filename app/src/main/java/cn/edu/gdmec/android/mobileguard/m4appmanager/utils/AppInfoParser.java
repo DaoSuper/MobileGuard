@@ -82,6 +82,7 @@ public class AppInfoParser {
             String apkpath = packInfo.applicationInfo.sourceDir;
             appinfo.apkPath = apkpath;
             File file = new File(apkpath);
+
             long appSize = file.length();
             appinfo.appSize = appSize;
             //应用程序安装的位置
