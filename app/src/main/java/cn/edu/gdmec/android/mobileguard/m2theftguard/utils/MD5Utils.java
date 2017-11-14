@@ -1,7 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard.utils;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by X on 2017/9/27.
@@ -10,15 +11,34 @@ import java.security.NoSuchAlgorithmException;
 public class MD5Utils {
     /**
      * md5摘要的算法
+     *
      * @param text
      * @return
      */
-    public static String encode(String text){
+    public static String encode(String text) {
+        return null;
+    }
+
+
+
+    /**
+     * 获取文件的md5值
+     * @param path 文件不存在
+     * @return null文件不存在
+     */
+    public static String getFileMd5(String path) {
         try {
             MessageDigest digest = MessageDigest.getInstance("md5");
-            byte [] result = digest.digest(text.getBytes());
+            File file = new File(path);
+            FileInputStream fis = new FileInputStream(file);
+            byte[] buffer = new byte[1024];
+            int len = -1;
+            while ((len = fis.read(buffer)) != -1) {
+                digest.update(buffer,0,len);
+            }
+            byte[] result = digest.digest();
             StringBuilder sb = new StringBuilder();
-            for(byte b : result){
+            for (byte b : result) {
                 int number = b&0xff;
                 String hex = Integer.toHexString(number);
                 if (hex.length()==1){
@@ -28,9 +48,9 @@ public class MD5Utils {
                 }
             }
             return sb.toString();
-        } catch (NoSuchAlgorithmException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            return "";
+            return null;
         }
     }
 }
