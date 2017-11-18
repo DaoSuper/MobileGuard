@@ -1,8 +1,11 @@
 package cn.edu.gdmec.android.mobileguard.m1home.utils;
 
+import android.annotation.TargetApi;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.webkit.MimeTypeMap;
 
 /**

@@ -3,6 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+
             <include layout="@layout/titlebar"/>
     
             <RelativeLayout
@@ -51,7 +52,7 @@
                     android:layout_marginTop="10dp"
                     android:text="全面扫描手机，杀毒更彻底"/>
 
-                <view
+                <View
                     android:layout_width="13dp"
                     android:layout_height="20dp"
                     android:background="@drawable/rightarrow_blue"
@@ -59,7 +60,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="15dp"/>
 
-                <view
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1.0px"
                     android:background="@color/black30"

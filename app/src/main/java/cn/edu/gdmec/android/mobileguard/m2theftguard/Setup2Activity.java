@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class Setup2Activity extends BaseSetUpActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_setup_2);
         //设置第二个小圆点的颜色
         ((RadioButton)findViewById(R.id.rb_second)).setChecked(true);
