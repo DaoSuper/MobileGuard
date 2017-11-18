@@ -22,8 +22,8 @@ public class DownloadUtils {
 
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
         request.setVisibleInDownloadsUi(true);
-
         request.setDestinationInExternalPublicDir("/download",targetFile);
+
         DownloadManager downloadManager = (DownloadManager)context.getSystemService(Context.DOWNLOAD_SERVICE);
         long mTaskid = downloadManager.enqueue(request);
 
