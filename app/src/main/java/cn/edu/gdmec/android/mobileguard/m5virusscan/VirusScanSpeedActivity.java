@@ -84,7 +84,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        //supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_virus_scan_speed);
         pm = getPackageManager();
         mSP = getSharedPreferences("config", MODE_PRIVATE);

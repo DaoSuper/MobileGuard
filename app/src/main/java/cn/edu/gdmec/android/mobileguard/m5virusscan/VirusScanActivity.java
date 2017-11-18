@@ -32,7 +32,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        //supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_virus_scan);
         mSP = getSharedPreferences("config",MODE_PRIVATE);
         copyDB("antivirus.db","");

@@ -126,7 +126,7 @@ public class VersionUpdateUtils {
 
     private void showUpdateDialog(final VersionEntity versionEntity){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("检查到有新版本："+versionEntity.versionCode);
+        builder.setTitle("检查到有新版本：\n"+versionEntity.versionCode);
         builder.setMessage(versionEntity.description);
         builder.setCancelable(false);
         builder.setIcon(R.mipmap.ic_launcher_round);
@@ -153,7 +153,7 @@ public class VersionUpdateUtils {
         DownloadUtils downloadUtils = new DownloadUtils();
         String filename = "downloadfile";
         String suffixes = "avi|mpeg|3gp|mp3|mp4|wav|jpeg|gif|jpg|png|apk|exe|pdf|rar|zip|docx|doc|apk|db";
-        Pattern pattern = Pattern.compile("[\\w]+[\\.]("+suffixes+")");//正则判断
+        Pattern pattern = Pattern.compile("[\\w]+[\\.]("+suffixes+")");
         Matcher matcher = pattern.matcher(apkurl);
         while (matcher.find()){
             filename = matcher.group();
