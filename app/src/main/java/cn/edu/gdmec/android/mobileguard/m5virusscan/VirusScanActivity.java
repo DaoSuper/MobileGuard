@@ -42,7 +42,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     protected void onResume() {
-        String string = mSP.getString("lastVirusScan","您还没有查杀病毒");
+        String string = mSP.getString("lastVirusScan","您还没有查杀病毒!");
         mLastTimeTV.setText(string);
         super.onResume();
     }
