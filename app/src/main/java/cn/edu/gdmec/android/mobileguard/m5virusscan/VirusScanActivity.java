@@ -119,6 +119,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
 
     /**
      * 初始化UI控件
+     *
      */
     private void initView() {
         findViewById(R.id.rl_titlebar).setBackgroundColor(
