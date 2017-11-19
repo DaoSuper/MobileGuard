@@ -98,6 +98,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
         process = 0;
         mScanAppInfos.clear();
         new Thread() {
+            @Override
             public void run() {
                 Message msg = Message.obtain();
                 msg.what = SCAN_BENGIN;
