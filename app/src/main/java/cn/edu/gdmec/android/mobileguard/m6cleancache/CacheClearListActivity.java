@@ -67,7 +67,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                         mCacheBtn.setEnabled(true);
                     }else {
                         mCacheBtn.setEnabled(false);
-                        Toast.makeText(CacheClearListActivity.this,"您的手机洁净如初",Toast.LENGTH_LONG).show();
+                        Toast.makeText(CacheClearListActivity.this,"您的手机洁净如新",Toast.LENGTH_LONG).show();
                     }
                     break;
             }
@@ -165,6 +165,7 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
                 cacheInfo.cacheSize = cachesize;
                 cacheInfo.packagename = info.packageName;
                 cacheInfo.appName = info.applicationInfo.loadLabel(pm).toString();
+                cacheInfo.appIcon = info.applicationInfo.loadIcon(pm);
                 cacheInfos.add(cacheInfo);
                 cacheMemory += cachesize;
             }

@@ -43,6 +43,7 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
             switch (msg.what){
                 case CLEANNING:
                     long memory = (Long) msg.obj;
+                    formatMemory(memory);
                     if (memory == cacheMemory){
                         animation.stop();
                         mCleanCacheFL.setVisibility(View.GONE);
@@ -98,17 +99,17 @@ public class CleanCacheActivity extends AppCompatActivity implements View.OnClic
         }.start();
     }
 
-    private void formatMemory(long memeory){
-        String cacheMemoryStr = Formatter.formatFileSize(this,memeory);
+    private void formatMemory(long memory){
+        String cacheMemoryStr = Formatter.formatFileSize(this,memory);
         String memoryStr;
         String memoryUnit;
         //根据大小判断单位
-        if (memeory > 900){
+        if (memory > 900){
             //大于则单位两位
             memoryStr = cacheMemoryStr.substring(0,cacheMemoryStr.length()-2);
             memoryUnit = cacheMemoryStr.substring(cacheMemoryStr.length()-2,cacheMemoryStr.length());
         }else {
-            //单位一位
+            //单位是一位
             memoryStr = cacheMemoryStr.substring(0,cacheMemoryStr.length()-1);
             memoryUnit = cacheMemoryStr.substring(cacheMemoryStr.length()-1,cacheMemoryStr.length());
         }

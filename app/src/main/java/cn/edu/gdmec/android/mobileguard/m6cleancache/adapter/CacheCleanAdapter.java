@@ -1,7 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m6cleancache.adapter;
 
 import android.content.Context;
-import android.support.v4.widget.ViewDragHelper;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
