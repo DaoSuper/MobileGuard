@@ -51,8 +51,8 @@ public class CacheClearListActivity extends AppCompatActivity implements View.On
             switch (msg.what){
                 case SCANNING:
                     PackageInfo info = (PackageInfo) msg.obj;
-                    mRecomandTV.setText("正在扫描: " + info.packageName);
-                    mCanCleanTV.setText("已扫描缓存：" + Formatter.formatFileSize(CacheClearListActivity.this,cacheMemory));
+                    mRecomandTV.setText("正在扫描： "+info.packageName);
+                    mCanCleanTV.setText("已扫描缓存 ："+ Formatter.formatFileSize(CacheClearListActivity.this,cacheMemory));
                     //在主线程添加变化后集合
                     mCacheInfos.clear();
                     mCacheInfos.addAll(cacheInfos);
