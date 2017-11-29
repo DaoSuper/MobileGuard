@@ -134,8 +134,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                         Toast.makeText(this,"您还没有设置运营商信息",Toast.LENGTH_LONG).show();
                         break;
                     case 1:
-                        //中国移动
-                        //发送cxll至10086
+                        //中国移动 发送cxll至10086
                         //获取系统默认的短信管理器
                         smsManager.sendTextMessage("10086",null,"CXLL",null,null);
                         break;
