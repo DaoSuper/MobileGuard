@@ -60,7 +60,7 @@ public class TrafficMonitoringService extends Service {
             }
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String dataString = sdf.format(date);
-            long mobileGPRS = dao.getMobileGPRS(dataString);
+            long mobileGPRS = dao.getMoblieGPRS(dataString);
             long mobileRxBytes = TrafficStats.getMobileRxBytes();
             long mobileTxBytes = TrafficStats.getMobileTxBytes();
             //新产生的流量
@@ -88,7 +88,7 @@ public class TrafficMonitoringService extends Service {
 
     @Override
     public void onDestroy() {
-        if (mThread != null & !mThread.isInterrupted()) {
+        if (mThread != null & !mThread.interrupted()) {
             flag = false;
             mThread.interrupt();
             mThread = null;
