@@ -102,9 +102,12 @@
         <activity android:name=".m5virusscan.VirusScanActivity"/>
         <activity android:name=".m6cleancache.CacheClearListActivity"/>
         <activity android:name=".m6cleancache.CleanCacheActivity"/>
-        <activity android:name=".m8trafficmonitor.OperatorSetActivity"/>
-        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"/>
 
+        <receiver
+            android:name=".m8trafficmonitor.reciever.BootCompleteReciever"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
 
         <service
             android:name=".m8trafficmonitor.service.TrafficMonitoringService"
@@ -112,11 +115,8 @@
             android:exported="true">
         </service>
 
-        <receiver
-            android:name=".m8trafficmonitor.reciever.BootCompleteReciever"
-            android:enabled="true"
-            android:exported="true">
-        </receiver>
+        <activity android:name=".m8trafficmonitor.OperatorSetActivity"/>
+        <activity android:name=".m8trafficmonitor.TrafficMonitoringActivity"/>
     </application>
 
 </manifest>

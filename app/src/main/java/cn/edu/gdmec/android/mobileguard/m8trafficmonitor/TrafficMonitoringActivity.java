@@ -14,10 +14,8 @@ import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -102,8 +100,8 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dataString = sdf.format(date);
-        long moblieGPRS = dao.getMobileGPRS(dataString);
-        if (moblieGPRS <0 ){
+        long moblieGPRS = dao.getMoblieGPRS(dataString);
+        if (moblieGPRS < 0 ){
             moblieGPRS = 0;
         }
         mToDayTV.setText("本日已用：" + Formatter.formatFileSize(this,moblieGPRS));
