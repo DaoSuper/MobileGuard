@@ -29,7 +29,7 @@
     <color name="light_rose_red">#F73CA7</color>
     <color name="rose_red">#E72993</color>
 
-    <!--缓存清除模块 2017.11.27-->
+    <!--流量统计模板 2017.11.27-->
     <color name="bright_green">#26E587</color>
     <color name="light_green">#55DC28</color>
 </resources>

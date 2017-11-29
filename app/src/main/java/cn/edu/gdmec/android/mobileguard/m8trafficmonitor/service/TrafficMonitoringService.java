@@ -36,6 +36,7 @@ public class TrafficMonitoringService extends Service {
     }
 
     private Thread mThread = new Thread() {
+        @Override
         public void run(){
             while (flag) {
                 try {
