@@ -29,7 +29,6 @@ public class TrafficDao {
      * @param dataString
      * @return
      */
-
     public long getMoblieGPRS(String dataString) {
         SQLiteDatabase db = helper.getReadableDatabase();
         long gprs = 0;
@@ -51,12 +50,11 @@ public class TrafficDao {
      *
      * @param gprs
      */
-
     public void insertTodayGPRS(long gprs) {
         SQLiteDatabase db = helper.getReadableDatabase();
         Date dNow = new Date();
-        Calendar calendar = Calendar.getInstance(); //得到日历
-        calendar.setTime(dNow); //把当时时间赋给日历
+        Calendar calendar = Calendar.getInstance(); // 得到日历
+        calendar.setTime(dNow);// 把当前时间赋给日历
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dataString = sdf.format(dNow);
         ContentValues values = new ContentValues();
@@ -70,7 +68,6 @@ public class TrafficDao {
      *
      * @param gprs
      */
-
     public void UpdateTodayGPRS(long gprs) {
         SQLiteDatabase db = helper.getWritableDatabase();
         Date date = new Date();
@@ -79,8 +76,7 @@ public class TrafficDao {
         ContentValues values = new ContentValues();
         values.put("gprs", String.valueOf(gprs));
         values.put("date", "datetime(" + dataString + ")");
-        db.update("traffic", values, "date=?", new String[] {
-                "datetime(" + dataString + ")"
-        });
+        db.update("traffic", values, "date=?", new String[] { "datetime("
+                + dataString + ")" });
     }
 }

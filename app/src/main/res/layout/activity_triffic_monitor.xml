@@ -66,7 +66,7 @@
     <Button
         android:id="@+id/btn_correction_flow"
         android:layout_width="280dp"
-        android:layout_height="45dp"
+        android:layout_height="78dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:layout_weight="4"
