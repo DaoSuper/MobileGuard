@@ -23,7 +23,7 @@ public class NumBelongtoDao {
         //15x
         //14x
         //18x
-        //17x
+        //17
         //长度是11位
         //……^1[134578]\d{9}$
         String dbname = context.getFilesDir() + "/address.db";
