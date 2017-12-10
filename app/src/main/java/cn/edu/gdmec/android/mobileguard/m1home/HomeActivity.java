@@ -27,6 +27,7 @@ import cn.edu.gdmec.android.mobileguard.m5virusscan.VirusScanSpeedActivity;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.CacheClearListActivity;
 import cn.edu.gdmec.android.mobileguard.m6cleancache.CleanCacheActivity;
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.TrafficMonitoringActivity;
+import cn.edu.gdmec.android.mobileguard.m9advancedtools.AdvancedToolsActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
@@ -74,6 +75,9 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 6://流量监控
                         startActivity(TrafficMonitoringActivity.class);
+                        break;
+                    case 7://高级工具
+                        startActivity(AdvancedToolsActivity.class);
                         break;
                 }
             }
