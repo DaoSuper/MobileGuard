@@ -129,7 +129,7 @@ public class AppLockFragment extends Fragment {
                               dao.delete(mLockApps.get(i).packageName);
                               //更新界面
                               mLockApps.remove(i);
-                              adapter.notifyDataSetChanged();
+                              adapter. notifyDataSetChanged();
                           }
                       });
                     };
