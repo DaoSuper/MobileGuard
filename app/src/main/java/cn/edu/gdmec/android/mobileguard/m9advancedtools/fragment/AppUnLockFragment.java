@@ -29,7 +29,7 @@ import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 public class AppUnLockFragment extends Fragment {
     private TextView mUnLockTV;
     private ListView mUnLockLV;
-    List<AppInfo> unlockApps = new ArrayList<>();
+    List<AppInfo> unlockApps = new ArrayList<AppInfo>();
     private AppLockAdapter adapter;
     private AppLockDao dao;
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
@@ -47,6 +47,7 @@ public class AppUnLockFragment extends Fragment {
                         adapter.notifyDataSetChanged();
                     }
                     mUnLockTV.setText("未加锁应用"+unlockApps.size()+"个");
+                    break;
             }
         }
     };
@@ -79,6 +80,7 @@ public class AppUnLockFragment extends Fragment {
     private void fillDate() {
         final List<AppInfo> aInfos = new ArrayList<AppInfo>();
         new Thread(){
+            @Override
             public void run() {
                 for(AppInfo info : appInfos) {
                     if (!dao.find(info.packageName)){
@@ -112,6 +114,7 @@ public class AppUnLockFragment extends Fragment {
                 ta.setDuration(300);
                 view.startAnimation(ta);
                 new Thread(){
+                    @Override
                     public void run() {
                         try {
                             Thread.sleep(300);

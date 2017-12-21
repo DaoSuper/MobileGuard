@@ -54,8 +54,8 @@ public class AppLockAdapter extends BaseAdapter {
             holder.mAppNameTV = (TextView) view.findViewById(R.id.tv_appname);
             holder.mLockIcon = (ImageView)view.findViewById(R.id.imgv_lock);
             view.setTag(holder);
-
         }
+
         final AppInfo appInfo = appInfos.get(i);
         holder.mAppIconImgv.setImageDrawable(appInfo.icon);
         holder.mAppNameTV.setText(appInfo.appName);

@@ -1,6 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +15,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +27,7 @@ import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
+import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.utils.SystemInfoUtils;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.adapter.AppLockAdapter;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
@@ -35,7 +40,7 @@ public class AppLockFragment extends Fragment {
     private AppLockAdapter adapter;
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
 
-    private Handler mhandler = new Handler(){
+    private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(android.os.Message msg){
             switch (msg.what){
@@ -99,8 +104,8 @@ public class AppLockFragment extends Fragment {
                 }
                 Message msg = new Message();
                 msg.obj = aInfos;
-                msg.what = 100;
-                mhandler.sendMessage(msg);
+                msg.what = 10;
+                mHandler.sendMessage(msg);
             }
         }.start();
     }
