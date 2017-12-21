@@ -34,17 +34,17 @@ public class AppUnLockFragment extends Fragment {
     private AppLockDao dao;
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
     private List<AppInfo> appInfos;
-    private Handler mhandler = new Handler() {
+    private Handler mhandler = new Handler(){
         @Override
         public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case 100:
                     unlockApps.clear();
                     unlockApps.addAll(((List<AppInfo>)msg.obj));
-                    if (adapter == null) {
+                    if(adapter == null){
                         adapter = new AppLockAdapter(unlockApps, getActivity());
                         mUnLockLV.setAdapter(adapter);
-                    }else {
+                    }else{
                         adapter.notifyDataSetChanged();
                     }
                     mUnLockTV.setText("未加锁应用"+unlockApps.size()+"个");
@@ -54,8 +54,9 @@ public class AppUnLockFragment extends Fragment {
     };
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_app_un_lock, null);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view =  inflater.inflate(R.layout.fragment_app_un_lock, null);
         mUnLockTV = (TextView) view.findViewById(R.id.tv_unlock);
         mUnLockLV = (ListView) view.findViewById(R.id.lv_unlock);
         return view;
@@ -65,46 +66,50 @@ public class AppUnLockFragment extends Fragment {
     public void onResume() {
         dao = new AppLockDao(getActivity());
         appInfos = AppInfoParser.getAppInfos(getActivity());
-        fillDate();
+        fillData();
         initListener();
         super.onResume();
         getActivity().getContentResolver().registerContentObserver(uri, true,
                 new ContentObserver(new Handler()) {
                     @Override
                     public void onChange(boolean selfChange) {
-                        fillDate();
+                        fillData();
                     }
-                 }
+                }
         );
     }
 
-    private void fillDate() {
-        final List<AppInfo> aInfos = new ArrayList<AppInfo>();
+    public void fillData() {
+
+        final List<AppInfo>  aInfos = new ArrayList<AppInfo>();
         new Thread(){
             @Override
             public void run() {
-                for(AppInfo info : appInfos) {
-                    if (!dao.find(info.packageName)){
+                for(AppInfo info : appInfos){
+                    if(!dao.find(info.packageName)){
                         //未加锁
                         info.isLock = false;
                         aInfos.add(info);
                     }
                 }
-                Message msg =new Message();
+                Message msg = new Message();
                 msg.obj = aInfos;
                 msg.what = 100;
                 mhandler.sendMessage(msg);
             };
         }.start();
+
+
     }
 
     private void initListener() {
         mUnLockLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-                                     final int i, long id) {
+                                    final int i, long id) {
                 //手机安全卫士不能加锁
-                if (unlockApps.get(i).packageName.equals("cn.edu.gdmec.android.mobileguard")){
+                if(unlockApps.get(i).packageName.equals("cn.edu.gdmec.android.mobileguard")){
                     return;
                 }
                 //给应用加锁
@@ -115,7 +120,6 @@ public class AppUnLockFragment extends Fragment {
                 ta.setDuration(300);
                 view.startAnimation(ta);
                 new Thread(){
-                    @Override
                     public void run() {
                         try {
                             Thread.sleep(300);
@@ -136,6 +140,4 @@ public class AppUnLockFragment extends Fragment {
             }
         });
     }
-
-
 }
