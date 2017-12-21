@@ -2,11 +2,14 @@ package cn.edu.gdmec.android.mobileguard.m8trafficmonitor;
 
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
@@ -43,6 +46,26 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
     private ImageView mRemindIMGV;
     private TextView mRemindTV;
     private CorrectFlowReceiver receiver;
+
+    //绑定服务
+    private TrafficMonitoringService trafficMonitoringService = null;
+    private boolean isBound;
+    private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            isBound = true;
+            TrafficMonitoringService.MyBinder binder = (TrafficMonitoringService.MyBinder) iBinder;
+            trafficMonitoringService = binder.getService();
+            trafficMonitoringService.getUsedFlow();
+            System.out.println("Userdflow:"+trafficMonitoringService.getUsedFlow());
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +83,8 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                         "cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service.TrafficMonitoringService")) {
             startService(new Intent(this, TrafficMonitoringService.class));
         }
+
+        bindService(new Intent(this,TrafficMonitoringService.class),conn,BIND_AUTO_CREATE);
         initView();
         registReceiver();
         initData();
@@ -142,6 +167,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                         break;
                     case 2:
                         // 中国联通
+                        smsManager.sendTextMessage("10010", null, "CXLL", null, null);
                         break;
                     case 3:
                         // 中国电信
@@ -227,5 +253,6 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
             receiver = null;
         }
         super.onDestroy();
+        unbindService(conn);
     }
 }

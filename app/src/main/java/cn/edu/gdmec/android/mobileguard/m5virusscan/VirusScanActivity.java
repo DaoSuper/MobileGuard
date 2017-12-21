@@ -50,11 +50,13 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg){
-            AntiVirusDao dao = new AntiVirusDao(VirusScanActivity.this);
-            String dbVersion = dao.getVirusDbVersion();
-            mDbVersionTV = (TextView) findViewById(R.id.tv_dbversion);
-            mDbVersionTV.setText("病毒数据库版本:"+dbVersion);
-            UpdateDb(dbVersion);
+            if (msg.what == 0){
+                AntiVirusDao dao = new AntiVirusDao(VirusScanActivity.this);
+                String dbVersion = dao.getVirusDbVersion();
+                mDbVersionTV = (TextView) findViewById(R.id.tv_dbversion);
+                mDbVersionTV.setText("病毒数据库版本:"+dbVersion);
+                UpdateDb(dbVersion);
+            }
             super.handleMessage(msg);
         }
     };
@@ -62,7 +64,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
         @Override
         public void afterDownload(String filename) {
-            copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory("/download/").getPath());
+            copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath());
         }
     };
 
@@ -140,6 +142,10 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
             case R.id.rl_allscanvirus:
                 startActivity(new Intent(this,VirusScanSpeedActivity.class));
                 break;
+            case R.id.rl_cloudscanvirus:
+                Intent intent = new Intent(this,VirusScanSpeedActivity.class);
+                intent.putExtra("cloud",true);
+                startActivity(intent);
         }
     }
 }
