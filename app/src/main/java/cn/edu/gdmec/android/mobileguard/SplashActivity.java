@@ -14,9 +14,10 @@ import cn.edu.gdmec.android.mobileguard.m1home.utils.MyUtils;
 import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final int MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS = 1101;
     private String mVersion;
     private TextView mVersionTV;
+    private static final int MY_PERMISSIONS_REQUEST_PACKAGE_USAGE_STATS = 1101;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,9 @@ public class SplashActivity extends AppCompatActivity {
                 versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/updateinfo.html");
             }
         }.start();
+        //startActivity(new Intent(this,HomeActivity.class));
     }
+
 
     private boolean hasPermission() {
         AppOpsManager appOps = (AppOpsManager)

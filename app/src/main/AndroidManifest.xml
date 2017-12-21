@@ -34,20 +34,20 @@
         android:theme="@style/AppTheme">
 
         <!-- <activity android:name=".SplashActivity"> -->
-        <activity android:name=".m1home.HomeActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".m1home.HomeActivity"/>
         <activity android:name=".m2theftguard.LostFindActivity" />
         <activity android:name=".m2theftguard.Setup1Activity" />
         <activity android:name=".m2theftguard.Setup2Activity" />
         <activity android:name=".m2theftguard.Setup3Activity" />
         <activity android:name=".m2theftguard.Setup4Activity" />
-        <activity android:name=".m3communicationguard.AddBlackNumberActivity" />
-        <activity android:name=".m3communicationguard.SecurityPhoneActivity" />
+
 
         <receiver
             android:name=".m2theftguard.receiver.BootCompleteReceiver"
@@ -86,6 +86,10 @@
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
+
+        <!--通讯卫士-->
+        <activity android:name=".m3communicationguard.AddBlackNumberActivity" />
+        <activity android:name=".m3communicationguard.SecurityPhoneActivity" />
         <receiver
             android:name=".m3communicationguard.receiver.InterceptCallReciever"
             android:enabled="true"
@@ -124,6 +128,12 @@
         <activity android:name=".m8trafficmonitor.OperatorSetActivity" />
         <activity android:name=".m9advancedtools.NumBelongtoActivity" />
         <activity android:name=".m9advancedtools.AdvancedToolsActivity" />
+
+        <service
+            android:name=".m9advancedtools.service.AppLockService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name=".m9advancedtools.EnterPswActivity" />
         <activity android:name=".m9advancedtools.AppLockActivity"></activity>
     </application>
