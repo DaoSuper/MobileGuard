@@ -28,28 +28,25 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
     private TextView mLastTimeTV;
     private TextView mDbVersionTV;
     private SharedPreferences mSP;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_virus_scan);
-        mSP = getSharedPreferences("config",MODE_PRIVATE);
+        mSP = getSharedPreferences("config", MODE_PRIVATE);
         copyDB("antivirus.db","");
         initView();
     }
 
-
     @Override
     protected void onResume() {
-        String string = mSP.getString("lastVirusScan","您还没有查杀病毒!");
+        String string = mSP.getString("lastVirusScan", "您还没有查杀病毒！");
         mLastTimeTV.setText(string);
         super.onResume();
     }
 
     Handler handler = new Handler(){
         @Override
-        public void handleMessage(Message msg){
+        public void handleMessage(Message msg) {
             if (msg.what == 0){
                 AntiVirusDao dao = new AntiVirusDao(VirusScanActivity.this);
                 String dbVersion = dao.getVirusDbVersion();
@@ -60,7 +57,6 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
             super.handleMessage(msg);
         }
     };
-
     VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
         @Override
         public void afterDownload(String filename) {
@@ -77,13 +73,14 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                 versionUpdateUtils.getCloudVersion("http://android2017.duapp.com/virusupdateinfo.html");
             }
         }.start();
-    }
 
+    }
     /**
      * 拷贝病毒数据库
-     * @param String
+     * @param
      */
     private void copyDB(final String dbname,final String fromPath) {
+        //大文件的拷贝复制一定要用线程，否则很容易出现ANR
         new Thread(){
             @Override
             public void run() {
@@ -98,7 +95,8 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                     if (fromPath.equals("")){
                         is = getAssets().open(dbname);
                     }else{
-                        file = new File(fromPath,"antivirus.db");
+                        file = new File(fromPath,
+                                "antivirus.db");
                         is= new FileInputStream(file);
                     }
 
@@ -117,10 +115,8 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
             };
         }.start();
     }
-
     /**
      * 初始化UI控件
-     *
      */
     private void initView() {
         findViewById(R.id.rl_titlebar).setBackgroundColor(
@@ -131,10 +127,11 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         mLeftImgv.setImageResource(R.drawable.back);
         mLastTimeTV = (TextView) findViewById(R.id.tv_lastscantime);
         findViewById(R.id.rl_allscanvirus).setOnClickListener(this);
+        findViewById(R.id.rl_cloudscanvirus).setOnClickListener(this);
     }
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.imgv_leftbtn:
                 finish();
                 break;
@@ -145,6 +142,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                 Intent intent = new Intent(this,VirusScanSpeedActivity.class);
                 intent.putExtra("cloud",true);
                 startActivity(intent);
+
         }
     }
 }
