@@ -35,7 +35,8 @@ public class AppUnLockFragment extends Fragment {
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
     private List<AppInfo> appInfos;
     private Handler mhandler = new Handler() {
-        public void handlerMessage(android.os.Message msg) {
+        @Override
+        public void handleMessage(android.os.Message msg) {
             switch (msg.what) {
                 case 100:
                     unlockApps.clear();
@@ -75,7 +76,7 @@ public class AppUnLockFragment extends Fragment {
                     }
                  }
         );
-    };
+    }
 
     private void fillDate() {
         final List<AppInfo> aInfos = new ArrayList<AppInfo>();
