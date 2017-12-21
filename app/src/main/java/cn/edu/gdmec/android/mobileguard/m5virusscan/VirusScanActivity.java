@@ -98,8 +98,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
                     if (fromPath.equals("")){
                         is = getAssets().open(dbname);
                     }else{
-                        file = new File(fromPath,
-                                "antivirus.db");
+                        file = new File(fromPath,"antivirus.db");
                         is= new FileInputStream(file);
                     }
 

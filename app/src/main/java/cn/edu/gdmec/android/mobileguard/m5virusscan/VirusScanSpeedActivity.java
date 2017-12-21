@@ -110,8 +110,7 @@ public class VirusScanSpeedActivity extends AppCompatActivity implements View.On
      */
     private void cloudScanVirus() {
         flag = true;
-        List<PackageInfo> installedPackages = pm
-                .getInstalledPackages(0);
+        List<PackageInfo> installedPackages = pm.getInstalledPackages(0);
         total = installedPackages.size();
 
         for (PackageInfo info : installedPackages) {
