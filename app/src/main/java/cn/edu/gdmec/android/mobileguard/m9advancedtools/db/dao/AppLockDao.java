@@ -62,7 +62,7 @@ public class AppLockDao {
 
     /**
      * 查询某个包名是否存在
-     * @param packagename
+     * @param  packagename
      * @return
      */
     public boolean find(String packagename){
