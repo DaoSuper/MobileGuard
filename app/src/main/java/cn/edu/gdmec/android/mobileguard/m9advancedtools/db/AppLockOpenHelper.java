@@ -10,12 +10,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AppLockOpenHelper extends SQLiteOpenHelper {
     public AppLockOpenHelper(Context context) {
-        super(context,"applock.db",null,1);
+        super(context, "applock.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table applock (id integer primary key autoincrement,packagename varchar(20)) ");
+        db.execSQL("create table applock (id integer primary key autoincrement, packagename  varchar(20))");
     }
 
     @Override
