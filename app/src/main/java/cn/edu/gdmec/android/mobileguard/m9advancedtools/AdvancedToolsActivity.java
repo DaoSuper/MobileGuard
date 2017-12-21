@@ -44,6 +44,10 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
                 //进入归属地查询页面
                 startActivity(NumBelongtoActivity.class);
                 break;
+            case R.id.advanceview_applock:
+                //进入程序锁界面
+                startActivity(AppLockActivity.class);
+                break;
         }
     }
 
