@@ -44,7 +44,6 @@ public class AppLockService extends Service {
     /**
      * 广播接收者
      */
-
     class AppLockReceiver extends BroadcastReceiver {
 
         @Override
@@ -67,7 +66,6 @@ public class AppLockService extends Service {
     /**
      * 内容观察者
      */
-
     class MyObserver extends ContentObserver {
 
         public MyObserver(Handler handler) {
