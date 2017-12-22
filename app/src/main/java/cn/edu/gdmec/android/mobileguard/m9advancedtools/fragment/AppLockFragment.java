@@ -1,7 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment;
 
-
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,8 +39,7 @@ public class AppLockFragment extends Fragment {
     private AppLockAdapter adapter;
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
     private Handler mHandler = new Handler(){
-        @Override
-        public void handleMessage(android.os.Message msg) {
+        public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 10:
                     mLockApps.clear();
@@ -89,7 +91,6 @@ public class AppLockFragment extends Fragment {
     private void fillData() {
         final List<AppInfo> aInfos = new ArrayList<AppInfo>();
         new Thread(){
-            @Override
             public void run() {
                 for (AppInfo appInfo : appInfos) {
                     if(dao.find(appInfo.packageName)){

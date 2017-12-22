@@ -4,10 +4,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by X on 2017/12/17.
- */
-
 public class AppLockOpenHelper extends SQLiteOpenHelper {
     public AppLockOpenHelper(Context context) {
         super(context, "applock.db", null, 1);

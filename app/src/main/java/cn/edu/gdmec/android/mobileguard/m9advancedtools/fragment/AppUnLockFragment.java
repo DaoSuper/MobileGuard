@@ -1,5 +1,6 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment;
 
+import android.content.Context;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,7 +26,6 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.adapter.AppLockAdapter;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
-
 public class AppUnLockFragment extends Fragment {
     private TextView mUnLockTV;
     private ListView mUnLockLV;
@@ -35,8 +35,7 @@ public class AppUnLockFragment extends Fragment {
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
     private List<AppInfo> appInfos;
     private Handler mhandler = new Handler(){
-        @Override
-        public void handleMessage(android.os.Message msg) {
+        public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 100:
                     unlockApps.clear();
@@ -83,7 +82,6 @@ public class AppUnLockFragment extends Fragment {
 
         final List<AppInfo>  aInfos = new ArrayList<AppInfo>();
         new Thread(){
-            @Override
             public void run() {
                 for(AppInfo info : appInfos){
                     if(!dao.find(info.packageName)){

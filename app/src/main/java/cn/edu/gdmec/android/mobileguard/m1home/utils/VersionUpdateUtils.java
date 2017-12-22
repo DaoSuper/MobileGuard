@@ -90,7 +90,9 @@ public class VersionUpdateUtils {
         this.nextActivty = nextActivty;
     }
 
-     //手机杀毒，获取服务器版本号
+    /**
+     * 手机杀毒，获取服务器版本号
+     */
     public void getCloudVersion(String url){
         try {
             HttpClient httpClient = new DefaultHttpClient();
@@ -185,7 +187,9 @@ public class VersionUpdateUtils {
         listener(downloadId,targetFile);
     }
 
-    // 注册广播监听系统的下载完成事件
+    /**
+     * 注册广播监听系统的下载完成事件
+     */
     private void listener(final long Id,final String filename){
         IntentFilter intentFilter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
         broadcastReceiver = new BroadcastReceiver() {

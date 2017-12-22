@@ -13,9 +13,6 @@ import java.util.List;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 
-/**
- * Created by X on 2017/12/18.
- */
 
 public class AppLockAdapter extends BaseAdapter {
     private List<AppInfo> appInfos;
@@ -45,30 +42,29 @@ public class AppLockAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder;
-        if (view != null && view instanceof RelativeLayout){
+        if(view !=null && view instanceof RelativeLayout){
             holder = (ViewHolder) view.getTag();
-        }else {
+        }else{
             holder = new ViewHolder();
-            view = View.inflate(context, R.layout.item_list_applock,null);
+            view = View.inflate(context, R.layout.item_list_applock, null);
             holder.mAppIconImgv = (ImageView) view.findViewById(R.id.imgv_appicon);
             holder.mAppNameTV = (TextView) view.findViewById(R.id.tv_appname);
-            holder.mLockIcon = (ImageView)view.findViewById(R.id.imgv_lock);
+            holder.mLockIcon = (ImageView) view.findViewById(R.id.imgv_lock);
             view.setTag(holder);
         }
 
         final AppInfo appInfo = appInfos.get(i);
         holder.mAppIconImgv.setImageDrawable(appInfo.icon);
         holder.mAppNameTV.setText(appInfo.appName);
-        if (appInfo.isLock){
+        if(appInfo.isLock){
             //表示当前应用已经加锁
             holder.mLockIcon.setBackgroundResource(R.drawable.applock_icon);
-        }else {
-            //表示当前应用未加锁
+        }else{
+            //当前应用未加锁
             holder.mLockIcon.setBackgroundResource(R.drawable.appunlock_icon);
         }
         return view;
     }
-
     static class ViewHolder{
         TextView mAppNameTV;
         ImageView mAppIconImgv;

@@ -1,6 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools;
 
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-public class AdvancedToolsActivity extends AppCompatActivity implements View.OnClickListener{
+public class AdvancedToolsActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +19,15 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_advanced_tools);
         initView();
     }
-
     /**初始化控件*/
-    private void initView(){
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_red));
+    private void initView() {
+        findViewById(R.id.rl_titlebar).setBackgroundColor(
+                getResources().getColor(R.color.bright_red));
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         ((TextView) findViewById(R.id.tv_title)).setText("高级工具");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
+
         findViewById(R.id.advanceview_applock).setOnClickListener(this);
         findViewById(R.id.advanceview_numbelongs).setOnClickListener(this);
         findViewById(R.id.advanceview_smsbackup).setOnClickListener(this);
@@ -45,15 +45,14 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
                 startActivity(NumBelongtoActivity.class);
                 break;
             case R.id.advanceview_applock:
-                //进入程序锁界面
+                //进入程序锁页面
                 startActivity(AppLockActivity.class);
                 break;
         }
     }
-
     /**
      * 开启新的activity不关闭自己
-     * @param  cls 新的activity 的字节码
+     * @param cls 新的activity的字节码
      */
     public void startActivity(Class<?> cls){
         Intent intent = new Intent(this,cls);

@@ -20,11 +20,7 @@ import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.EnterPswActivity;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
-
-/**
- * Created by X on 2017/12/18.程序锁服务
- */
-
+//程序锁服务
 public class AppLockService extends Service {
     /** 是否开启程序锁服务的标志 */
     private boolean flag = false;
@@ -40,9 +36,7 @@ public class AppLockService extends Service {
     private AppLockReceiver receiver;
     private MyObserver observer;
 
-    /**
-     * 广播接收者
-     */
+    // 广播接收者
     class AppLockReceiver extends BroadcastReceiver {
 
         @Override
@@ -62,9 +56,7 @@ public class AppLockService extends Service {
         }
     }
 
-    /**
-     *    内容观察者
-     */
+    // 内容观察者
     class MyObserver extends ContentObserver {
 
         public MyObserver(Handler handler) {
@@ -114,7 +106,6 @@ public class AppLockService extends Service {
      */
     private void startApplockService() {
         new Thread() {
-            @Override
             public void run() {
                 flag = true;
                 while (flag) {
