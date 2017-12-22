@@ -12,7 +12,7 @@ public class BootCompleteReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         ((App)(context.getApplicationContext())).correctSIM();
-        //启动程序锁服务。
+        //启动程序锁服务
         context.startService(new Intent(context,AppLockService.class));
     }
 }
