@@ -13,7 +13,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-import android.provider.Settings;
 
 import java.util.List;
 
@@ -64,7 +63,7 @@ public class AppLockService extends Service {
     }
 
     /**
-     * 内容观察者
+     *    内容观察者
      */
     class MyObserver extends ContentObserver {
 
