@@ -13,14 +13,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
-
 import java.util.List;
-
 import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.EnterPswActivity;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
-//程序锁服务
+/**程序锁服务*/
 public class AppLockService extends Service {
     /** 是否开启程序锁服务的标志 */
     private boolean flag = false;
@@ -36,7 +34,9 @@ public class AppLockService extends Service {
     private AppLockReceiver receiver;
     private MyObserver observer;
 
-    // 广播接收者
+    /**
+     * 广播接收者
+     */
     class AppLockReceiver extends BroadcastReceiver {
 
         @Override
@@ -56,7 +56,9 @@ public class AppLockService extends Service {
         }
     }
 
-    // 内容观察者
+    /**
+     * 内容观察者
+     */
     class MyObserver extends ContentObserver {
 
         public MyObserver(Handler handler) {
@@ -89,7 +91,7 @@ public class AppLockService extends Service {
         filter.addAction(Intent.ACTION_SCREEN_OFF);
         registerReceiver(receiver, filter);
         // 创建Intent实例，用来打开输入密码页面
-        intent = new Intent(AppLockService.this, EnterPswActivity.class);
+        intent = new Intent(AppLockService.this,EnterPswActivity.class);
         // 获取ActivityManager对象
         am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
         startApplockService();
@@ -106,6 +108,7 @@ public class AppLockService extends Service {
      */
     private void startApplockService() {
         new Thread() {
+            @Override
             public void run() {
                 flag = true;
                 while (flag) {
